@@ -1,0 +1,48 @@
+/* Reset básico y estilos globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Título principal */
+h1 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+/* Contenedor principal de la app */
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 600px;
+  background: white;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  border-radius: 8px;
+  padding: 30px;
+}
+
+/* Estilos para el área donde se mostrará el mapa mental */
+.mindmap-area {
+  height: 500px;
+  border: 2px dashed #3498db;
+  border-radius: 6px;
+  background-color: #ecf0f1;
+  overflow: auto;
+}
