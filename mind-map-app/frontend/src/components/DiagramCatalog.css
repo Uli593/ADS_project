@@ -1,0 +1,327 @@
+/* DiagramCatalog.css - Estilos mejorados */
+
+.diagram-catalog {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.catalog-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-button:hover {
+  color: #4f46e5;
+}
+
+.arrow-icon {
+  font-size: 1.2rem;
+}
+
+h1 {
+  color: #1e293b;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.search-bar {
+  position: relative;
+  max-width: 400px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.diagram-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.diagram-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.diagram-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.diagram-thumbnail {
+  height: 160px;
+  background-color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+}
+
+.db-model {
+  background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
+}
+
+.sales-system {
+  background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
+}
+
+.social-network {
+  background: linear-gradient(135deg, #86efac 0%, #4ade80 100%);
+}
+
+.thumbnail-nodes {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.node-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.node-dot:nth-child(1) {
+  top: 30%;
+  left: 30%;
+}
+
+.node-dot:nth-child(2) {
+  top: 30%;
+  right: 30%;
+}
+
+.node-dot:nth-child(3) {
+  bottom: 30%;
+  left: 40%;
+}
+
+.edge-line {
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background: white;
+  opacity: 0.8;
+}
+
+.edge-line:nth-child(4) {
+  top: 35%;
+  left: 35%;
+  transform: rotate(30deg);
+}
+
+.edge-line:nth-child(5) {
+  top: 35%;
+  left: 35%;
+  transform: rotate(-30deg);
+}
+
+.diagram-info {
+  padding: 1.25rem;
+  flex-grow: 1;
+}
+
+.diagram-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #1e293b;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.diagram-info p {
+  margin: 0.25rem 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.diagram-actions {
+  display: flex;
+  border-top: 1px solid #f1f5f9;
+  padding: 0.75rem;
+}
+
+.edit-btn, .delete-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.edit-btn {
+  color: #6366f1;
+}
+
+.edit-btn:hover {
+  color: #4f46e5;
+  background-color: #f8fafc;
+}
+
+.delete-btn {
+  color: #ef4444;
+}
+
+.delete-btn:hover {
+  color: #dc2626;
+  background-color: #f8fafc;
+}
+
+.new-diagram {
+  border: 2px dashed #cbd5e1;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #64748b;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.new-diagram:hover {
+  border-color: #6366f1;
+}
+
+.new-diagram:hover .new-card-content {
+  color: #6366f1;
+}
+
+.plus-icon {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Loading state */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: #64748b;
+}
+
+.spinner {
+  border: 4px solid rgba(99, 102, 241, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #6366f1;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state */
+.error {
+  color: #ef4444;
+  text-align: center;
+  padding: 2rem;
+  background: #fef2f2;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+.error button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.error button:hover {
+  background: #dc2626;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .diagram-catalog {
+    padding: 1rem;
+  }
+  
+  .diagram-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .catalog-header {
+    gap: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+}

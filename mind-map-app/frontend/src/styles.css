@@ -1,0 +1,634 @@
+/* Variables de diseño */
+:root {
+  --primary-color: #4361ee;
+  --primary-light: #e0e7ff;
+  --secondary-color: #3f37c9;
+  --accent-color: #4895ef;
+  --danger-color: #f72585;
+  --success-color: #4cc9f0;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-500: #adb5bd;
+  --border-radius-sm: 6px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.2s ease;
+}
+
+/* Reset y estilos base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
+               Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--dark-color);
+  background-color: #f5f7fa;
+  line-height: 1.5;
+}
+
+/* Contenedor principal */
+.app {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estilos para React Flow */
+.react-flow {
+  background-color: white !important;
+}
+
+/* Nodos más pequeños y compactos */
+.react-flow__node {
+  padding: 8px 10px;
+  border-radius: var(--border-radius);
+  background: white;
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--box-shadow-sm);
+  transition: var(--transition);
+  font-size: 0.8rem;
+  min-width: 120px;
+  max-width: 200px;
+}
+
+.react-flow__node:hover {
+  box-shadow: var(--box-shadow);
+  border-color: var(--primary-color);
+}
+
+.react-flow__node.selected {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* Nodos de imagen más compactos */
+.react-flow__node.imageNode {
+  padding: 4px;
+  overflow: hidden;
+}
+
+/* Controles de React Flow */
+.react-flow__controls {
+  box-shadow: var(--box-shadow) !important;
+  border-radius: var(--border-radius-lg) !important;
+  overflow: hidden;
+}
+
+.react-flow__controls button {
+  background-color: white !important;
+  border-bottom: 1px solid var(--gray-200) !important;
+  transition: var(--transition) !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.react-flow__controls button:hover {
+  background-color: var(--light-color) !important;
+}
+
+.react-flow__controls button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Handles de conexión más pequeños */
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border: 2px solid white;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.react-flow__handle-left {
+  left: -4px;
+}
+
+.react-flow__handle-right {
+  right: -4px;
+}
+
+.react-flow__node:hover .react-flow__handle,
+.react-flow__node.selected .react-flow__handle {
+  opacity: 1;
+}
+
+/* Conexiones */
+.react-flow__edge-path {
+  stroke: var(--primary-color);
+  stroke-width: 2;
+  stroke-dasharray: none;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: var(--secondary-color);
+  stroke-width: 3;
+}
+
+/* Toolbar mejorado */
+.toolbar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background-color: white;
+  padding: 12px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--gray-200);
+}
+
+.toolbar-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--gray-200);
+  margin-bottom: 4px;
+}
+
+.toolbar-tab {
+  flex: 1;
+  padding: 8px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--gray-500);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.toolbar-tab:hover {
+  color: var(--primary-color);
+}
+
+.toolbar-tab.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.toolbar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.toolbar-button {
+  padding: 8px 12px;
+  background-color: white;
+  border: 1px solid var(--gray-200);
+  color: var(--dark-color);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbar-button:hover {
+  background-color: var(--light-color);
+  border-color: var(--gray-300);
+  transform: translateY(-1px);
+}
+
+.toolbar-button:active {
+  transform: translateY(0);
+}
+
+.toolbar-button:disabled {
+  background-color: var(--light-color);
+  color: var(--gray-500);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.toolbar-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+  transition: var(--transition);
+}
+
+.toolbar-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* Panel de usuario */
+.user-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--gray-200);
+  font-size: 0.8rem;
+}
+
+.logout-button {
+  padding: 4px 8px;
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.logout-button:hover {
+  background-color: #e51774;
+  transform: translateY(-1px);
+}
+
+/* Input file oculto */
+.file-input {
+  display: none;
+}
+
+/* Nombre del archivo */
+.file-name {
+  margin-left: 8px;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.toolbar, .user-panel {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Efecto de carga */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .toolbar {
+    width: 240px;
+    padding: 10px;
+  }
+  
+  .user-panel {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+  
+  .react-flow__node {
+    font-size: 0.7rem;
+    padding: 6px 8px;
+    min-width: 100px;
+  }
+  
+  .file-name {
+    max-width: 100px;
+  }
+}
+
+/* Estilos para el fondo del diagrama */
+.react-flow__background {
+  background-color: #f8fafc !important;
+}
+
+.react-flow__background pattern {
+  stroke: #e2e8f0 !important;
+}
+
+/* Mejoras para el minimapa */
+.react-flow__minimap {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--box-shadow) !important;
+  border: 1px solid var(--gray-200) !important;
+}
+
+/* Estilos para los nodos personalizados */
+.custom-node {
+  padding: 8px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--gray-200);
+  background: white;
+  box-shadow: var(--box-shadow-sm);
+  font-size: 0.8rem;
+}
+
+.custom-node.selected {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.custom-node .node-header {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--primary-color);
+  border-bottom: 1px dashed var(--gray-200);
+  padding-bottom: 4px;
+}
+
+.custom-node .node-attributes {
+  margin-top: 4px;
+}
+
+.custom-node .node-attribute {
+  display: flex;
+  align-items: center;
+  font-size: 0.7rem;
+  color: var(--gray-500);
+  margin-top: 2px;
+}
+
+.custom-node .node-attribute::before {
+  content: "•";
+  margin-right: 4px;
+  color: var(--accent-color);
+}
+
+/* Clase para ocultar elementos */
+.hidden {
+  display: none;
+}
+
+/* Estilos para el formulario de guardado */
+.save-form {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: white;
+  border-radius: var(--border-radius-sm);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.form-group input[type="text"] {
+  padding: 8px 10px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.save-button {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.save-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-1px);
+}
+
+.save-button:active {
+  transform: translateY(0);
+}
+
+.save-button:disabled {
+  background-color: var(--gray-300);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .save-form {
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .save-button {
+    padding: 6px 10px;
+  }
+}
+
+/* Estilos para el contenedor de autenticación */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: var(--light-color);
+}
+
+/* Tarjeta de autenticación */
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+  background-color: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
+  border: 1px solid var(--gray-200);
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.auth-card h2 {
+  margin-bottom: 24px;
+  color: var(--dark-color);
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Mensajes de error */
+.auth-error {
+  padding: 12px;
+  margin-bottom: 20px;
+  background-color: rgba(247, 37, 133, 0.1);
+  color: var(--danger-color);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+  text-align: center;
+  border: 1px solid rgba(247, 37, 133, 0.2);
+}
+
+/* Grupos de formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  background-color: white;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.form-group input::placeholder {
+  color: var(--gray-500);
+  opacity: 0.6;
+}
+
+/* Botón de autenticación */
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.auth-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-1px);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.auth-button:disabled {
+  background-color: var(--gray-300);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Pie de página de autenticación */
+.auth-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--gray-500);
+}
+
+.auth-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.auth-footer a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Efectos de carga */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px;
+  }
+  
+  .auth-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-group input {
+    padding: 10px 12px;
+  }
+  
+  .auth-button {
+    padding: 10px;
+  }
+}
